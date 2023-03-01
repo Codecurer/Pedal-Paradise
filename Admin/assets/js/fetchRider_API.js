@@ -152,4 +152,4 @@ isStatusUpdate = (id, status) => {
             window.location.href = "http://127.0.0.1:5500/Admin/enrollment-list.html";
         }
     });
-}
+}  
