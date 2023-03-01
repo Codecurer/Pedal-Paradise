@@ -30,7 +30,7 @@ const mNumber = document.getElementById("mobileNumber");
 loginForm.onsubmit = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('http://192.168.29.130:3000/login', {
+    let response = await fetch('http://192.168.29.131:3000/login', {
         method: 'POST',
         body: new FormData(loginForm)
     });
@@ -49,7 +49,7 @@ signUpForm.onsubmit = async (e) => {
 
     e.preventDefault();
 
-    let response = await fetch('http://192.168.29.130:3000/user/register', {
+    let response = await fetch('http://192.168.29.131:3000/user/register', {
         method: 'POST',
         body: new FormData(signUpForm)
     });

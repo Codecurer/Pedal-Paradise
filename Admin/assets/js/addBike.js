@@ -27,6 +27,6 @@ isSaveBike = () => {
   document.getElementById("closeBtn").style.display = "none";
 
   setTimeout(() => {
-    window.location.href = "http://127.0.0.1:5500/index.html";
+    window.location.href = "http://127.0.0.1:5500/Admin/index.html";
   }, 4000);
 }
