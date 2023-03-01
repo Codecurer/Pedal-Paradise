@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="logo.jpg" alt="">
+        <span class="d-none d-lg-block">Pedal Paradise</span>
+      </a>
+      <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Meet Kalaria</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Meet Kalariya</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="./auth.html">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+  <div class="col-lg-12 mx-auto" style="margin:15px 0px 0px 0px;overflow: hidden;">
+    <div class="row">
+      <h2 class="text-center"><img src="../assets/img/bg.png" class="img-fluid" alt=""></h2>
+    </div>
+  </div>
+  <main id="main" class="main">
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <div class="col-lg-12">
+          <div class="row">
+
+            <div class="text-center font-weight-bold">
+              <h2 style="color:#062d73;font-weight:bold;" class="mb-4">Bike rental tariffs in Ahmedabad</h2>
+              <p class="mb-4">*All prices are exclusive of taxes and fuel. Images used for
+                representation purposes only, actual color may vary.</p>
+            </div>
+            <div class="row no-gutters text-center">
+              <!-- <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div> -->
+              <div class="col-6 col-md-4">
+                <select name="" id="" class="form-control" style="width:250px;">
+                  <option value="">Available Bikes</option>
+                  <option value="">low to high</option>
+                  <option value="">high to low</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-12 my-4">
+
+              <div class="row">
+
+                <div class="col-xxl-3 col-md-12 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">DUKE 250CC Orange</h5>
+                    <img class="card-img-top" src="./assets/img/KTM_DUKE_200_ABS.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">PULSAR 350CC Red</h5>
+                    <img class="card-img-top" src="./assets/img/BAJAJ__PULSAR_150.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">
+                        This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.
+                      </p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">ACTIVA 125CC Gray</h5>
+                    <img class="card-img-top" src="./assets/img/HONDA_ACTIVA_5G.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">Royal Enfield 350CC Black</h5>
+                    <img class="card-img-top" src="./assets/img/ROYAL_ENFIELD_CLASSIC_350_STEALTH_BLACK.png"
+                      alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-12 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">DUKE 250CC Orange</h5>
+                    <img class="card-img-top" src="./assets/img/KTM_DUKE_200_ABS.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">PULSAR 350CC Red</h5>
+                    <img class="card-img-top" src="./assets/img/BAJAJ__PULSAR_150.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">ACTIVA 125CC Gray</h5>
+                    <img class="card-img-top" src="./assets/img/HONDA_ACTIVA_5G.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6 card-deck">
+
+                  <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">Royal Enfield 350CC Black</h5>
+                    <img class="card-img-top" src="./assets/img/ROYAL_ENFIELD_CLASSIC_350_STEALTH_BLACK.png"
+                      alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted"><button data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered" class="btn btn-warning col-12">Book
+                            Now</button></small></p>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- end bike list -->
+              </div>
+            </div>
+            <!-- </div> -->
+    </section>
+
+    <div class="modal fade bd-example-modal-sm" id="verticalycentered" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><b>Search your next ride</b></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="date">Pickup</label>
+                <input type="date" class="form-control my-2" id="pdate" aria-describedby="date"
+                  placeholder="Select pickup date">
+              </div>
+              <div class="form-group">
+                <label for="Drop off">Drop off</label>
+                <input type="date" class="form-control my-2" id="ddate" placeholder="Password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning col-md-12" id="book">Search</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Disabled Animation Modal-->
+
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>LoopBreakers</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://www.linkedin.com/in/meet-kalariya-8974b4193/" target="_Blank">~ Meet Kalaria</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/addBike.js"></script>
+  <script src="assets/js/fetchBike_API.js"></script>
+
+</body>
+
+</html>
