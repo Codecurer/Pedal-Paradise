@@ -1,5 +1,4 @@
-let deleteAllBikeButton = document.getElementById("isDeleteBike");
-deleteAllBikeButton.addEventListener('click', () => {
+deleteAllBikeButton = () => {
     if (confirm("are you sure want to delete all bike?")) {
         $.ajax({
             type: 'DELETE',
@@ -7,4 +6,4 @@ deleteAllBikeButton.addEventListener('click', () => {
             success: function (resultData) { alert(resultData) }
         });
     }
-});
+}

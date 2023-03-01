@@ -64,20 +64,20 @@ async function dataResult(pgNumber) {
     tableStr = "";
     
     // console.log(obj);
-    obj.forEach((data, index) => {
+    obj.sort().forEach((data, index) => {
       
       const d = new Date(data.bPurchaseDate);
       const date = d.getDate() + " - " + d.toLocaleString('default', { month: 'short' }) + " - " + d.getFullYear();
       
       tableStr += `<tr>
       <th scope="row"><a onclick="modalImage('')" data-bs-toggle="modal"
-      data-bs-target="#verticalycentered"><img class="im" style="transition: .5s ease;" src="../assets/img/KTM_DUKE_200_ABS.png"></a></th>
+      data-bs-target="#verticalycentered"><img class="im" style="transition: .5s ease;" src="./assets/img/KTM_DUKE_200_ABS.png"></a></th>
       <td class="fw-bold">${data.name}</td>
       <td class="fw-bold">${date}</td>
       <td class="fw-bold text-primary" style="text-transform: uppercase;">${data.bikenumber}</td>
       <td class="fw-bold">${data.chargeperday} / Day</td>
       <td>${data.bRentStatus}</td>
-      <td><i class="bi bi-currency-rupee"></i>${data.chargeperday}</td>
+      <td><i class="bi bi-currency-rupee"></i>${data.revenueOnBike}</td>
       <td>
       <div class="form-check form-switch text-success" style="margin-left:25px;">
     ${data.status ? `<input onchange="isStatusUpdate('${data._id}','${data.status}')" style="width:35px;" class="form-check-input" type="checkbox" id="bikeStatus" checked>` : `<input onchange="isStatusUpdate('${data._id}','${data.status}')" style="width:35px;" class="form-check-input" type="checkbox" id="bikeStatus">`}
@@ -158,5 +158,5 @@ isStatusUpdate = (id, status) => {
 }
 
 modalImage = () => {
-  document.getElementById('imageAppend').innerHTML = '<img class="img-fluid" src="../assets/img/KTM_DUKE_200_ABS.png" alt="">';
+  document.getElementById('imageAppend').innerHTML = '<img class="img-fluid" src="./assets/img/KTM_DUKE_200_ABS.png" alt="">';
 }

@@ -26,6 +26,7 @@ async function responses(ALLAPIs) {
     document.getElementById("pageLength").value = Math.ceil(responseObj.length / limit);
 }
 responses(ALLAPI)
+
 let fetchData = async (url) => {
 
     tableBody.innerHTML = `<tr><td colspan="8">
@@ -61,16 +62,11 @@ async function dataResult(pgNumber) {
 
         tableStr = "";
 
-        // console.log(obj);
         obj.forEach((data, index) => {
 
-            console.log(data);
-            // const d = new Date(data.bPurchaseDate);
-            // const date = d.getDate() + " - " + d.toLocaleString('default', { month: 'short' }) + " - " + d.getFullYear();
-
             tableStr += `<tr>
-            <td class="fw-bold text-primary">#${5874+1}</td>
-            <td scope="row"><img class="im" style="transition: .5s ease;" src="../assets/img/KTM_DUKE_200_ABS.png"></td>
+            <td class="fw-bold text-primary">#${5874 + 1}</td>
+            <td scope="row"><img class="im" style="transition: .5s ease;" src="./assets/img/KTM_DUKE_200_ABS.png"></td>
             <td class="fw-bold">${data.fullName}</td>
             <td class="fw-bold">${data.mobileNumber}</td>
             <td class="fw-bold">${data.licenceNumber}</td>

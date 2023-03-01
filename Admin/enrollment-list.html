@@ -200,13 +200,20 @@
                                             <h6>Filter</h6>
                                         </li>
 
-                                        <li><a class="dropdown-item" id="isDeleteBike">Delete All</a></li>
+                                        <!-- <li id="dltButton"><a class="dropdown-item"><button
+                                                    class="btn btn-danger">Delete ALL</button></a></li> -->
                                     </ul>
                                 </div>
 
                                 <div class="card-body pb-0">
+                                    
                                     <h5 class="card-title">Rider's Data<span>| Dashboard</span></h5>
-
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Rider's mobilenumber" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-primary" style="border-radius: 0px;" type="button">Search</button>
+                                        </div>
+                                      </div>     
                                     <table class="table table-borderless text-center">
                                         <thead>
                                             <tr>
@@ -239,8 +246,8 @@
                                                     id="pgS" onclick="num(this.value)" value="2"></li>
                                             <li class="page-item"><a class="page-link" aria-disabled="true">....</a>
                                             </li>
-                                            <li class="page-item" id="lastPage"><input id="pageLength" type="button" class="page-link"
-                                                onclick="num(this.value)"></li>
+                                            <li class="page-item" id="lastPage"><input id="pageLength" type="button"
+                                                    class="page-link" onclick="num(this.value)"></li>
                                             <li class="page-item">
                                                 <a class="page-link" aria-label="Next" id="nextPage">
                                                     <span class="sr-only">Next</span>
