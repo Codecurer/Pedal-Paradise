@@ -6,8 +6,8 @@ const length = 0;
 
 var tableStr = "";
 
-const API = "http://192.168.29.131:3000/user/getPageUsers";
-const ALLAPI = "http://192.168.29.131:3000/user/users";
+const API = "http://192.168.29.130:3000/user/getPageUsers";
+const ALLAPI = "http://192.168.29.130:3000/user/users";
 var pageLength = 0;
 let limit = 2;
 async function responses(ALLAPIs) {
@@ -63,7 +63,7 @@ async function dataResult(pgNumber) {
         tableStr = "";
 
         obj.forEach((data, index) => {
-
+            
             tableStr += `<tr>
             <td class="fw-bold text-primary">#${5874 + 1}</td>
             <td scope="row"><img class="im" style="transition: .5s ease;" src="./assets/img/KTM_DUKE_200_ABS.png"></td>
@@ -142,7 +142,7 @@ let dataStatus = "";
 isStatusUpdate = (id, status) => {
     $.ajax({
         type: 'POST',
-        url: "http://192.168.29.131:3000/user/changeStatus/",
+        url: "http://192.168.29.130:3000/user/changeStatus/",
         data: { id: id },
         success: function (resultData) {
             window.location.href = "http://127.0.0.1:5500/Admin/enrollment-list.html";

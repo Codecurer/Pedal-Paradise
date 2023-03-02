@@ -16,30 +16,24 @@ function toggleLogin() {
     document.getElementById("login-form").style.display = "block";
 }
 
-const em = document.getElementById("em");
-const pw = document.getElementById("pw");
-
-const profile = document.getElementById("profile");
-const lnumber = document.getElementById("lnumber");
-const email = document.getElementById("email");
-const fname = document.getElementById("fName");
-const password = document.getElementById("password");
-const cPassword = document.getElementById("confirmPassword");
-const mNumber = document.getElementById("mobileNumber");
-
+const loginForm = document.getElementById("loginForm");
 loginForm.onsubmit = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('http://192.168.29.131:3000/login', {
+    let response = await fetch('http://192.168.29.130:3000/login', {
         method: 'POST',
         body: new FormData(loginForm)
 
     }).then(function (response) {
-
+        if (response.status==401) {
+            alert("invalid credintails");
+        }else{
+            alert("success");
+        }
         return response.json();
 
     }).then(function (data) {
-        
+
         console.log(data.token);
 
         var base64Url = data.token.split('.')[1];
@@ -48,7 +42,14 @@ loginForm.onsubmit = async (e) => {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
 
-        console.log(JSON.parse(jsonPayload));
+        let tokenObj = JSON.parse(jsonPayload);
+        console.log(tokenObj.user.isAdmin);
+        if (tokenObj.user.isAdmin) {
+            alert("Admin Panel");
+        } else {
+            alert("User Panel...");
+        }
+        // console.log(JSON.parse(jsonPayload));
 
     });
 

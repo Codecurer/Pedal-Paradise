@@ -5,8 +5,8 @@ const length = 0;
 
 var tableStr = "";
 
-const API = "http://192.168.29.131:3000/admin/getPageBikes";
-const ALLBIKEAPI = "http://192.168.29.131:3000/admin/bike";
+const API = "http://192.168.29.130:3000/admin/getPageBikes";
+const ALLBIKEAPI = "http://192.168.29.130:3000/admin/bike";
 var pageLength = 0;
 let limit = 2;
 async function responses(ALLBIKEAPIs) {
@@ -28,7 +28,7 @@ responses(ALLBIKEAPI)
 
 
 let fetchData = async (url) => {
-  
+
   tableBody.innerHTML = `<tr><td colspan="8">
   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
   <lord-icon
@@ -36,39 +36,42 @@ let fetchData = async (url) => {
     trigger="loop"
     style="width:250px;height:250px">
     </lord-icon></td></tr>`;
-    
-    try {
-      
-      const response = await fetch(url);
-      // const response = await fetch(url, { signal });
-      
-      if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
+
+  try {
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { Authentication: 'Bearer ' },
+    });
+    // const response = await fetch(url, { signal });
+
+    if (!response.ok) {
+      const message = `An error has occured: ${response.status}`;
       throw new Error(message);
     }
 
     const obj = await response.json();
     return obj;
-    
+
   } catch (error) {
     console.log(error);
   }
 }
 async function dataResult(pgNumber) {
-  
+
   try {
 
     const obj = await fetchData(API + `/${pgNumber}`);
-    
-    
+
+
     tableStr = "";
-    
+
     // console.log(obj);
     obj.sort().forEach((data, index) => {
-      
+
       const d = new Date(data.bPurchaseDate);
       const date = d.getDate() + " - " + d.toLocaleString('default', { month: 'short' }) + " - " + d.getFullYear();
-      
+
       tableStr += `<tr>
       <th scope="row"><a onclick="modalImage('')" data-bs-toggle="modal"
       data-bs-target="#verticalycentered"><img class="im" style="transition: .5s ease;" src="./assets/img/KTM_DUKE_200_ABS.png"></a></th>
@@ -84,11 +87,11 @@ async function dataResult(pgNumber) {
     </div>
     </td>
     </tr>`;
-    
-  })
-  tableBody.innerHTML = tableStr;
-  
-} catch (error) {
+
+    })
+    tableBody.innerHTML = tableStr;
+
+  } catch (error) {
     tableBody.innerHTML = "<tr><td colspan='8'><b class='card-title'>Oops! Sorry Data not found!</b></td></tr>";
     console.log(error);
   }
@@ -104,7 +107,7 @@ nextButton.addEventListener('click', () => {
   if (global >= pageLength) {
     nextButton.disabled = true;
   } else {
-    
+
     dataResult(nextPage());
     pageSecond.value = global;
     document.getElementById("pgS").classList.add("active");
@@ -148,15 +151,16 @@ function num(e) {
 }
 
 
-isStatusUpdate = (id, status) => {
-  $.ajax({
-    type: 'POST',
-    url: "http://192.168.29.130:3000/admin/changeStatus/",
-    data: { id: id },
-    success: function (resultData) { alert(resultData) }
-  });
-}
+isStatusUpdate = async (id, status) => {
+    let response = await fetch('http://192.168.29.130:3000/admin/changeStatus/', {
+      method: 'POST',
+      headers: { Authentication: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImltYWdlIjp7ImRhdGEiOiIvdXBsb2Fkcy9CQUpBSl9fUFVMU0FSXzE1MC5wbmciLCJjb250ZW50VHlwZSI6ImltYWdlL3BuZyJ9LCJfaWQiOiI2M2ZkZjcyYzFjMTJhMWI0Y2MzYjYxYjkiLCJmdWxsTmFtZSI6Ik1lZXQgS2FsYXJpeWEiLCJtb2JpbGVOdW1iZXIiOjEyMzQ1Njc4OTAsIm5vT2ZCb29raW5ncyI6MCwiZW1haWwiOiJtZWV0QGdtYWlsLmNvbSIsInN0YXR1cyI6dHJ1ZSwibGljZW5jZU51bWJlciI6Ik5WTUNCODk1REQiLCJwYXNzd29yZCI6IiQyYiQxMCRpdzAxSGlvSm5TLnlkV3JYRnc5VC8uRS5IMTNvbmdXRExyR3lBVGV0QWUwc2ZWYmVWUUp5LiIsIl9fdiI6MCwicmV2ZW51ZU9uVXNlciI6MCwiaXNBZG1pbiI6dHJ1ZX0sImlhdCI6MTY3Nzc0MzMzM30.Jca-x3fbrAw_k0SLbA7MZa1-DeiNPVVmuGSLplTIyps' },
+      data: {bikeID:id}
+    }).then(function (response) {
+      console.log(response);
+    });
+  }
 
 modalImage = () => {
-  document.getElementById('imageAppend').innerHTML = '<img class="img-fluid" src="./assets/img/KTM_DUKE_200_ABS.png" alt="">';
-}
+      document.getElementById('imageAppend').innerHTML = '<img class="img-fluid" src="./assets/img/KTM_DUKE_200_ABS.png" alt="">';
+    }
