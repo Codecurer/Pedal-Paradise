@@ -20,51 +20,50 @@ const loginForm = document.getElementById("loginForm");
 loginForm.onsubmit = async (e) => {
     e.preventDefault();
 
-    let response = await fetch('http://192.168.29.130:3000/login', {
-        method: 'POST',
-        body: new FormData(loginForm)
+    try {
 
-    }).then(function (response) {
-        if (response.status==401) {
-            alert("invalid credintails");
-        }else{
-            alert("success");
-        }
-        return response.json();
+        let response = await fetch('http://192.168.29.130:3000/login', {
+            method: 'POST',
+            body: new FormData(loginForm)
 
-    }).then(function (data) {
+        }).then(function (response) {
+            if (response.status == 401) {
+                throw new Error(`error has been occured`);
+            } else {
+                return response.json();
+            }
 
-        console.log(data.token);
+        }).catch((error) => {
+            console.log(error);
+        }).then(function (data) {
 
-        var base64Url = data.token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
+            try {
+                if (data != null) {
 
-        let tokenObj = JSON.parse(jsonPayload);
-        console.log(tokenObj.user.isAdmin);
-        if (tokenObj.user.isAdmin) {
-            alert("Admin Panel");
-        } else {
-            alert("User Panel...");
-        }
-        // console.log(JSON.parse(jsonPayload));
+                    localStorage.setItem("authToken",data.token);
 
-    });
+                    var base64Url = data.token.split('.')[1];
+                    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
 
-    // fetch('http://192.168.29.131:3000/login')
+                    let tokenObj = JSON.parse(jsonPayload);
+                    console.log(tokenObj.user.isAdmin);
+                    if (tokenObj.user.isAdmin) {
+                        alert("Admin Panel");
+                    } else {
+                        alert("User Panel...");
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+            }
 
-    // console.log(response.body);
-
-
-    //let result = await response.json();
-
-    // if (result.isAdmin == null) {
-    //     window.location.href = "http://127.0.0.1:5501/index.html";
-    // } else {
-    //     window.location.href = "../Admin/index.html";
-    // }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 signUpForm.onsubmit = async (e) => {
 
