@@ -321,3 +321,21 @@ window.addEventListener("blur", () => {
 window.addEventListener("focus", () => {
   document.title = docT;
 })
+
+function signOut() {
+  localStorage.clear();
+  window.location.href = "../Rider/auth.html";
+}
+
+function signUp() {
+
+  if(JSON.parse(localStorage.getItem("authToken"))!=null){
+    window.location.href = "../Admin/index.html";
+  }else{
+    window.location.href = "../Rider/auth.html";
+  }
+}
+
+if (JSON.parse(localStorage.getItem("authToken")) == null) {
+  window.location.href = "../Rider/auth.html";
+}

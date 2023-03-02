@@ -15,7 +15,13 @@ function toggleLogin() {
     document.getElementById("signup-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
 }
-
+if (JSON.parse(localStorage.getItem("authToken")) != null) {
+    if (JSON.parse(localStorage.getItem("authToken")).role) {
+        window.location.href = "../Admin/index.html";
+    } else {
+        window.location.href = "../Rider/index.html";
+    }
+}
 const loginForm = document.getElementById("loginForm");
 loginForm.onsubmit = async (e) => {
     e.preventDefault();
@@ -33,14 +39,10 @@ loginForm.onsubmit = async (e) => {
                 return response.json();
             }
 
-        }).catch((error) => {
-            console.log(error);
         }).then(function (data) {
 
             try {
                 if (data != null) {
-
-                    localStorage.setItem("authToken",data.token);
 
                     var base64Url = data.token.split('.')[1];
                     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -49,11 +51,19 @@ loginForm.onsubmit = async (e) => {
                     }).join(''));
 
                     let tokenObj = JSON.parse(jsonPayload);
-                    console.log(tokenObj.user.isAdmin);
+
+                    const authRole = {
+                        role: tokenObj.user.isAdmin ? true : false,
+                        token: data.token
+                    }
+
+                    localStorage.setItem("authToken", JSON.stringify(authRole));
+
                     if (tokenObj.user.isAdmin) {
-                        alert("Admin Panel");
+                        window.location.href = "../Admin/index.html";
+                        
                     } else {
-                        alert("User Panel...");
+                        window.location.href = "../Rider/index.html";
                     }
                 }
             } catch (error) {
@@ -75,8 +85,6 @@ signUpForm.onsubmit = async (e) => {
     });
 
     let result = await response.json();
-
-    console.log(result.isAdmin);
 
     alert(result.isAdmin);
 };

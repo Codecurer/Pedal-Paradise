@@ -151,10 +151,10 @@ function num(e) {
 }
 
 isStatusUpdate = async (id) => {
-  
+
   let response = await fetch('http://192.168.29.130:3000/admin/changeStatus/', {
     method: 'POST',
-    headers: { 'Content-Type' : 'application/json', Authentication: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImltYWdlIjp7ImRhdGEiOiIvdXBsb2Fkcy9CQUpBSl9fUFVMU0FSXzE1MC5wbmciLCJjb250ZW50VHlwZSI6ImltYWdlL3BuZyJ9LCJfaWQiOiI2M2ZkZjcyYzFjMTJhMWI0Y2MzYjYxYjkiLCJmdWxsTmFtZSI6Ik1lZXQgS2FsYXJpeWEiLCJtb2JpbGVOdW1iZXIiOjEyMzQ1Njc4OTAsIm5vT2ZCb29raW5ncyI6MCwiZW1haWwiOiJtZWV0QGdtYWlsLmNvbSIsInN0YXR1cyI6dHJ1ZSwibGljZW5jZU51bWJlciI6Ik5WTUNCODk1REQiLCJwYXNzd29yZCI6IiQyYiQxMCRpdzAxSGlvSm5TLnlkV3JYRnc5VC8uRS5IMTNvbmdXRExyR3lBVGV0QWUwc2ZWYmVWUUp5LiIsIl9fdiI6MCwicmV2ZW51ZU9uVXNlciI6MCwiaXNBZG1pbiI6dHJ1ZX0sImlhdCI6MTY3Nzc0ODc4MX0.pp9IGAAFJ4x_eFLLdgknLNN7PzlFe_wZh768AOLjUjA' },
+    headers: { 'Content-Type' : 'application/json', Authentication: localStorage.getItem("authToken") },
     body: JSON.stringify({ id: id }),
   }).then(function (response) {
     console.log(response);

@@ -1,15 +1,8 @@
-var tableBody = document.getElementById("bikeTable");
-var pageFirst = document.getElementById("pgF");
-let pageSecond = document.getElementById("pgS");
 const length = 0;
 
 var tableStr = "";
 
 const API = "http://192.168.29.130:3000/admin/getPageBikes";
-
-// const controller = new AbortController();
-// const signal = controller.signal;
-// setTimeout(() => controller.abort(), 500);
 
 let fetchData = async (url) => {
 
@@ -46,7 +39,6 @@ async function dataResult(pgNumber) {
 
     tableStr = "";
 
-    // console.log(obj);
     obj.forEach((data, index) => {
 
       const d = new Date(data.bPurchaseDate);
@@ -73,58 +65,6 @@ async function dataResult(pgNumber) {
   } catch (error) {
     tableBody.innerHTML = "<tr><td colspan='8'><b class='card-title'>Oops! Sorry Data not found!</b></td></tr>";
     console.log(error);
-  }
-}
-
-var global = 1;
-
-nextPage = () => { global++; return global; }; prevPage = () => { global--; return global; };
-
-let nextButton = document.getElementById("nextPage");
-
-nextButton.addEventListener('click', () => {
-  if (global >= 3) {
-    nextButton.disabled = true;
-  } else {
-
-    dataResult(nextPage());
-    pageSecond.value = global;
-    document.getElementById("pgS").classList.add("active");
-    document.getElementById("pgF").classList.remove("active");
-    pageFirst.value = global - 1;
-  }
-});
-
-
-let prevButton = document.getElementById("previousPage");
-
-prevButton.addEventListener('click', () => {
-  if (global <= 1) {
-    prevButton.disabled = true;
-  } else {
-    dataResult(Number.parseInt(prevPage()));
-    pageFirst.value = global;
-    document.getElementById("pgS").classList.remove("active");
-    document.getElementById("pgF").classList.add("active");
-    pageSecond.value = global + 1;
-  }
-});
-
-
-window.addEventListener("load", dataResult(1));
-document.getElementById("pgF").classList.add("active");
-
-function num(e) {
-  if (pageFirst.value == e) {
-    global = e;
-    dataResult(global);
-    document.getElementById("pgS").classList.remove("active");
-    document.getElementById("pgF").classList.add("active");
-  } else {
-    global = e;
-    dataResult(global);
-    document.getElementById("pgS").classList.add("active");
-    document.getElementById("pgF").classList.remove("active");
   }
 }
 
