@@ -22,6 +22,9 @@ if (JSON.parse(localStorage.getItem("authToken")) != null) {
         window.location.href = "../Rider/index.html";
     }
 }
+let a;
+let r;
+
 const tokenDecode = (token) => {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -54,6 +57,13 @@ loginForm.onsubmit = async (e) => {
                 if (data != null) {
 
                     const accessToken = tokenDecode(data.accesstoken);
+
+                    // const expTime = {
+                    //     a: accessToken.exp,
+                    //     r: accessToken.iat
+                    // }
+
+                    // localStorage.setItem("aE", JSON.stringify(expTime));
 
                     const authRole = {
                         role: accessToken.user.isAdmin ? true : false,
@@ -88,7 +98,7 @@ signUpForm.onsubmit = async (e) => {
         body: new FormData(signUpForm)
     });
 
-     let result = await response.json();
+    let result = await response.json();
 
     window.location.href = "../Rider/auth.html";
 };

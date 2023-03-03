@@ -1,23 +1,12 @@
-const length = 0;
-
-var tableStr = "";
-
-const API = "http://192.168.29.130:3000/admin/getPageBikes";
+const API = "http://192.168.29.130:3000/admin/bike";
+var bikeListString = "";
+let bikeCard = document.getElementById("bikeList");
 
 let fetchData = async (url) => {
-
-  tableBody.innerHTML = `<tr><td colspan="8">
-  <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<lord-icon
-    src="https://cdn.lordicon.com/eqfafivu.json"
-    trigger="loop"
-    style="width:250px;height:250px">
-</lord-icon></td></tr>`;
 
   try {
 
     const response = await fetch(url);
-    // const response = await fetch(url, { signal });
 
     if (!response.ok) {
       const message = `An error has occured: ${response.status}`;
@@ -31,51 +20,78 @@ let fetchData = async (url) => {
     console.log(error);
   }
 }
-async function dataResult(pgNumber) {
+async function dataResult() {
 
   try {
 
-    const obj = await fetchData(API + `/${pgNumber}`);
+    const obj = await fetchData(API);
 
-    tableStr = "";
+    bikeListString = "";
 
     obj.forEach((data, index) => {
 
+      console.log(data);
       const d = new Date(data.bPurchaseDate);
       const date = d.getDate() + " - " + d.toLocaleString('default', { month: 'short' }) + " - " + d.getFullYear();
 
-      tableStr += `<tr>
-    <th scope="row"><a href="#"><img src="../assets/img/KTM_DUKE_200_ABS.png"></a></th>
-    <td class="fw-bold">${data.name}</td>
-    <td class="fw-bold">${date}</td>
-    <td class="fw-bold text-primary" style="text-transform: uppercase;">${data.bikenumber}</td>
-    <td class="fw-bold">${data.chargeperday} / Day</td>
-    <td>${data.bRentStatus}</td>
-    <td><i class="bi bi-currency-rupee"></i>${data.chargeperday}</td>
-    <td>
-    <div  style="margin-left:25px;" class="form-check form-switch text-success">
-    ${data.status ? `<input onchange="isStatusUpdate('${data._id}','${data.status}')" style="width:35px;" class="form-check-input" type="checkbox" id="bikeStatus" checked>` : `<input onchange="isStatusUpdate('${data._id}','${data.status}')" style="width:35px;" class="form-check-input" type="checkbox" id="bikeStatus">`}
-    </div>
-    </td>
-    </tr>`;
-
+      bikeListString += `
+      <div class="col-xxl-3 col-md-12 card-deck">
+          <div class="card info-card sales-card">
+                    <h5 class="card-title text-center">${data.name}</h5>
+                    <img class="card-img-top" src="./assets/img/KTM_DUKE_200_ABS.png" alt="Card image cap">
+                    <hr>
+                    <div class="card-body">
+                      <h5 class="card-title">${data.name} - ${data.bikenumber}</h5>
+                      <p class="card-text">
+                      <ul class="list-group m-3">
+                        <li class="list-item">Bike Average - ${data.average}</li>
+                        <li class="list-item">Bike Purchase Date - ${date}</li>
+                        <li class="list-item">Bike Avialble Status - ${data.bRentStatus}</li>
+                        <li class="list-item">Charges Per Day &#8377;-${data.chargeperday}</li>
+                      </ul>
+                      <p class="card-text"><button data-bs-toggle="modal"
+                      data-bs-target="#verticalycentered" class="btn btn-warning col-12" onclick="bookNow('${data._id}')">Book
+                      Now</button></p>
+            </div>
+          </div>
+        </div>
+      `;
+      bikeCard.innerHTML = bikeListString;
     })
-    tableBody.innerHTML = tableStr;
 
   } catch (error) {
-    tableBody.innerHTML = "<tr><td colspan='8'><b class='card-title'>Oops! Sorry Data not found!</b></td></tr>";
+    bikeCard.innerHTML = "<tr><td colspan='8'><b class='card-title'>Oops! Sorry Data not found!</b></td></tr>";
     console.log(error);
   }
 }
 
-isStatusUpdate = (id, status) => {
-  $.ajax({
-    type: 'POST',
-    url: "http://192.168.29.130:3000/admin/changeStatus/",
-    data: { id: id },
-    success: function (resultData) { alert(resultData) }
+dataResult();
+
+let bikeID;
+function bookNow(bikeId) { bikeID = bikeId; }
+
+bookingForm.onsubmit = async (e) => {
+
+
+  e.preventDefault();
+
+  const formData = new FormData(bookingForm);
+
+  const plainFormData = Object.fromEntries(formData.entries());
+  const formDataJsonString = JSON.stringify(plainFormData);
+
+  let response = await fetch('http://192.168.29.130:3000/user/bookBike', {
+
+    method: 'POST',
+    headers: { "Content-Type": "application/json", Authentication: localStorage.getItem("authToken") },
+    body: JSON.stringify({
+      formData: formDataJsonString,
+      bId: bikeID
+    })
   });
+
+  let result = await response.json();
+
+  // window.location.href = "../Rider/index.html";
+
 }
-
-
-
