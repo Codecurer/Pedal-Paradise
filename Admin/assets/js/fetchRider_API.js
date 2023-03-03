@@ -63,7 +63,7 @@ async function dataResult(pgNumber) {
         tableStr = "";
 
         obj.forEach((data, index) => {
-            
+
             tableStr += `<tr>
             <td class="fw-bold text-primary">#${5874 + 1}</td>
             <td scope="row"><img class="im" style="transition: .5s ease;" src="./assets/img/KTM_DUKE_200_ABS.png"></td>
@@ -139,13 +139,13 @@ function num(e) {
     }
 }
 let dataStatus = "";
-isStatusUpdate = (id, status) => {
-    $.ajax({
-        type: 'POST',
-        url: "http://192.168.29.130:3000/user/changeStatus/",
-        data: { id: id },
-        success: function (resultData) {
-            window.location.href = "http://127.0.0.1:5500/Admin/enrollment-list.html";
-        }
-    });
+isStatusUpdate = async (id) => {
+    let response = await fetch('http://192.168.29.130:3000/admin/changeUserStatus/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authentication: localStorage.getItem("authToken") },
+        body: JSON.stringify({ id: id }),
+    }).then(function (response) {
+        console.log(response);
+        // window.location.href = "http://127.0.0.1:5500/Admin/enrollment-list.html";
+    })
 }  

@@ -22,6 +22,15 @@ if (JSON.parse(localStorage.getItem("authToken")) != null) {
         window.location.href = "../Rider/index.html";
     }
 }
+const tokenDecode = (token) => {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return tokenObj = JSON.parse(jsonPayload);
+}
 const loginForm = document.getElementById("loginForm");
 loginForm.onsubmit = async (e) => {
     e.preventDefault();
@@ -44,24 +53,19 @@ loginForm.onsubmit = async (e) => {
             try {
                 if (data != null) {
 
-                    var base64Url = data.token.split('.')[1];
-                    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                    }).join(''));
-
-                    let tokenObj = JSON.parse(jsonPayload);
+                    const accessToken = tokenDecode(data.accesstoken);
 
                     const authRole = {
-                        role: tokenObj.user.isAdmin ? true : false,
-                        token: data.token
+                        role: accessToken.user.isAdmin ? true : false,
+                        token: data.accesstoken,
+                        RefreshToken: data.refreshtoken
                     }
 
                     localStorage.setItem("authToken", JSON.stringify(authRole));
 
-                    if (tokenObj.user.isAdmin) {
+                    if (accessToken.user.isAdmin) {
                         window.location.href = "../Admin/index.html";
-                        
+
                     } else {
                         window.location.href = "../Rider/index.html";
                     }
@@ -79,12 +83,12 @@ signUpForm.onsubmit = async (e) => {
 
     e.preventDefault();
 
-    let response = await fetch('http://192.168.29.131:3000/user/register', {
+    let response = await fetch('http://192.168.29.130:3000/user/register', {
         method: 'POST',
         body: new FormData(signUpForm)
     });
 
-    let result = await response.json();
+     let result = await response.json();
 
-    alert(result.isAdmin);
+    window.location.href = "../Rider/auth.html";
 };

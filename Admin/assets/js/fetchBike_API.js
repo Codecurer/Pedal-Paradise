@@ -151,10 +151,9 @@ function num(e) {
 }
 
 isStatusUpdate = async (id) => {
-
-  let response = await fetch('http://192.168.29.130:3000/admin/changeStatus/', {
+  let response = await fetch('http://192.168.29.130:3000/admin/changeBikeStatus/', {
     method: 'POST',
-    headers: { 'Content-Type' : 'application/json', Authentication: JSON.parse(localStorage.getItem("authToken")).token },
+    headers: { 'Content-Type' : 'application/json', Authentication: localStorage.getItem("authToken") },
     body: JSON.stringify({ id: id }),
   }).then(function (response) {
     console.log(response);
