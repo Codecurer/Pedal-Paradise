@@ -329,9 +329,9 @@ function signOut() {
 
 function signUp() {
 
-  if(JSON.parse(localStorage.getItem("authToken"))!=null){
+  if (JSON.parse(localStorage.getItem("authToken")) != null) {
     window.location.href = "../Admin/index.html";
-  }else{
+  } else {
     window.location.href = "../Rider/auth.html";
   }
 }

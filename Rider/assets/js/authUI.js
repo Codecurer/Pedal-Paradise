@@ -35,7 +35,9 @@ const tokenDecode = (token) => {
     return tokenObj = JSON.parse(jsonPayload);
 }
 const loginForm = document.getElementById("loginForm");
+
 loginForm.onsubmit = async (e) => {
+
     e.preventDefault();
 
     try {
@@ -74,9 +76,19 @@ loginForm.onsubmit = async (e) => {
                     localStorage.setItem("authToken", JSON.stringify(authRole));
 
                     if (accessToken.user.isAdmin) {
+                        fetch('http://192.168.29.130:3000/updateBikeRentStatus', {
+                            method: 'POST',
+                            headers: { "Content-Type": "application/json", Authentication: localStorage.getItem("authToken") }
+                        });
+
                         window.location.href = "../Admin/index.html";
 
                     } else {
+
+                        fetch('http://192.168.29.130:3000/updateBikeRentStatus', {
+                            method: 'POST',
+                            headers: { Authentication: localStorage.getItem("authToken") }
+                        });
                         window.location.href = "../Rider/index.html";
                     }
                 }

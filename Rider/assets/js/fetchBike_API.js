@@ -41,7 +41,7 @@ async function dataResult() {
                     <img class="card-img-top" src="./assets/img/KTM_DUKE_200_ABS.png" alt="Card image cap">
                     <hr>
                     <div class="card-body">
-                      <h5 class="card-title">${data.name} - ${data.bikenumber}</h5>
+                      <h5 class="card-title">${data.bikenumber}</h5>
                       <p class="card-text">
                       <ul class="list-group m-3">
                         <li class="list-item">Bike Average - ${data.average}</li>
