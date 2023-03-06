@@ -22,6 +22,7 @@ if (JSON.parse(localStorage.getItem("authToken")) != null) {
         window.location.href = "../Rider/index.html";
     }
 }
+
 let a;
 let r;
 

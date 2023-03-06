@@ -1,4 +1,4 @@
-const API = "http://192.168.29.130:3000/admin/bike";
+const API = "http://192.168.29.130:3000/user/unbookedBike";
 var bikeListString = "";
 let bikeCard = document.getElementById("bikeList");
 
@@ -31,10 +31,11 @@ async function dataResult() {
     obj.forEach((data, index) => {
 
       console.log(data);
+      
       const d = new Date(data.bPurchaseDate);
       const date = d.getDate() + " - " + d.toLocaleString('default', { month: 'short' }) + " - " + d.getFullYear();
 
-      bikeListString += `
+        bikeListString += `
       <div class="col-xxl-3 col-md-12 card-deck">
           <div class="card info-card sales-card">
                     <h5 class="card-title text-center">${data.name}</h5>
@@ -56,7 +57,8 @@ async function dataResult() {
           </div>
         </div>
       `;
-      bikeCard.innerHTML = bikeListString;
+        bikeCard.innerHTML = bikeListString;
+      
     })
 
   } catch (error) {

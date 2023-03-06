@@ -6,10 +6,17 @@ const length = 0;
 
 var tableStr = "";
 
-const API = "http://192.168.29.130:3000/user/getPageUsers";
+let riderFiler;
+let API = "http://192.168.29.130:3000/user/getPageUsers";
+filterRiders = () => {
+    const riderFilterInput = document.getElementById("riderMobNumber").value;
+    riderFiler = riderFilterInput;
+    API = "http://192.168.29.130:3000/user/getPageUsers";
+}
 const ALLAPI = "http://192.168.29.130:3000/user/users";
 var pageLength = 0;
 let limit = 2;
+
 async function responses(ALLAPIs) {
     let fet = await fetch(ALLAPIs);
     let responseObj = await fet.json();
