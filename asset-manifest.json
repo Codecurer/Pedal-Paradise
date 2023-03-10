@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/css/main.44f8b8b5.css",
+    "main.js": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/js/main.e8c03d44.js",
+    "static/js/787.6c901778.chunk.js": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/js/787.6c901778.chunk.js",
+    "static/media/Spinner.gif": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/media/Spinner.625f8a651e12b11b01e1.gif",
+    "index.html": "/Pedal-Paradise/tree/master/ReactJs-Learning/index.html",
+    "main.44f8b8b5.css.map": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/css/main.44f8b8b5.css.map",
+    "main.e8c03d44.js.map": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/js/main.e8c03d44.js.map",
+    "787.6c901778.chunk.js.map": "/Pedal-Paradise/tree/master/ReactJs-Learning/static/js/787.6c901778.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44f8b8b5.css",
+    "static/js/main.e8c03d44.js"
+  ]
+}
