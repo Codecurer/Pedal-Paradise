@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Pedal-Paradise/static/css/main.44f8b8b5.css",
-    "main.js": "/Pedal-Paradise/static/js/main.081e6faa.js",
-    "static/js/787.6c901778.chunk.js": "/Pedal-Paradise/static/js/787.6c901778.chunk.js",
-    "static/media/Spinner.gif": "/Pedal-Paradise/static/media/Spinner.625f8a651e12b11b01e1.gif",
-    "index.html": "/Pedal-Paradise/index.html",
-    "main.44f8b8b5.css.map": "/Pedal-Paradise/static/css/main.44f8b8b5.css.map",
-    "main.081e6faa.js.map": "/Pedal-Paradise/static/js/main.081e6faa.js.map",
-    "787.6c901778.chunk.js.map": "/Pedal-Paradise/static/js/787.6c901778.chunk.js.map"
+    "main.css": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/css/main.44f8b8b5.css",
+    "main.js": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/js/main.fff321ad.js",
+    "static/js/787.6c901778.chunk.js": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/js/787.6c901778.chunk.js",
+    "static/media/Spinner.gif": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/media/Spinner.625f8a651e12b11b01e1.gif",
+    "index.html": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/index.html",
+    "main.44f8b8b5.css.map": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/css/main.44f8b8b5.css.map",
+    "main.fff321ad.js.map": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/js/main.fff321ad.js.map",
+    "787.6c901778.chunk.js.map": "/Codecurer.github.io/Pedal-Paradise/ReactJs%20-%20Learning/pressroom/static/js/787.6c901778.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.44f8b8b5.css",
-    "static/js/main.081e6faa.js"
+    "static/js/main.fff321ad.js"
   ]
 }
