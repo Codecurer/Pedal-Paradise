@@ -2,10 +2,12 @@ import React from "react";
 import Image from "react-bootstrap/Image";
 import Spinner from "./Spinner.gif";
 
-export default function Loading() {
+const Loading = () => {
   return (
     <div className="text-center">
-      <Image style={{height:'200px',width:'250px'}} srcSet={Spinner} roundedCircle/>
+      <Image srcSet={Spinner} roundedCircle/>
     </div>
-  );
+  ); 
 }
+
+export default Loading

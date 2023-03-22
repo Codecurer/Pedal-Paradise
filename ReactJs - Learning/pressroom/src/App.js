@@ -1,26 +1,81 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NavBar from "./Components/NavBar";
 import News from "./Components/News";
+import Customenews from './Components/Customenews';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
+import { routes } from "./Components/Route";
 
-export default class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <header>
-          <NavBar />
-        </header>
-        <Routes>
-          <Route exact path="/" element={<News key="general" pageSize={4} country="in" category="general"/>}/>
-          <Route exact path="/entertainment" element={<News key="entertainment"  pageSize={4} country="in" category="entertainment" />}/>
-          <Route exact path="/sports" element={<News key="sports"  pageSize={4} country="in" category="sports" />}/>
-          <Route exact path="/business" element={<News key="business"  pageSize={4} country="in" category="business" />}/>
-          <Route exact path="/health" element={<News key="health"  pageSize={4} country="in" category="health" />}/>
-          <Route exact path="/science" element={<News key="science"  pageSize={4} country="in" category="science" />}/>
-          <Route exact path="/technology" element={<News key="technology"  pageSize={4} country="in" category="technology" />}/>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => {
+  const pageLimit = 8;
+  const apiKey = process.env.REACT_APP_NEWS_API;
+
+  const [progress, updateProgress] = useState(0);
+  const [mode, changeMode] = useState("light");
+
+  const setProgress = (progress) => {
+    updateProgress(progress);
+  };
+
+  const changeModeToggle = () => {
+    if (mode === "light") {
+      changeMode("dark");
+      document.body.style.backgroundColor = "#042743";
+    } else {
+      changeMode("light");
+      document.body.style.backgroundColor = "white";
+    }
+  };
+
+  return (
+    <BrowserRouter>
+      <header>
+        <LoadingBar color="#f11946" progress={progress} />
+        <NavBar topProgress={setProgress}  mode={mode}
+          changeModeToggle={changeModeToggle}/>
+        {/* {console.log(themeMode)} */}
+      </header>
+      <Routes>
+        {routes.map((routeobject,i) => {
+          return (
+            <Route 
+              exact
+              path={routeobject.pathname}
+              key={i}
+              element={  
+                <News
+                  apikey={apiKey}
+                  topprogress={setProgress}
+                  key={i}
+                  pagesize={pageLimit}
+                  country="in"
+                  mode={mode}
+                  category={routeobject.category}
+                />
+              }
+            />
+          );
+        })}
+        <Route 
+              exact
+              path="/Customenews"
+              key="10"
+              element={  
+                <Customenews
+                  apikey="http://192.168.29.131:1337/api/savemeta-data"
+                  likeAPI="http://192.168.29.131:1337/api/savemeta-data"
+                  topprogress={setProgress}
+                  key="10"
+                  pagesize={pageLimit}
+                  mode={mode}
+                />
+              }
+            />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
